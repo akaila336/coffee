@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Login page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<header class="header">
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <a href="#" class="logo">Coffee<i class="fas fa-mug-hot"></i> </a>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="book.html">Book</a>
+        <a href="login.html">Login</a>
+    </nav>
+
+    <a href="book.html" class="btn">Book a table</a>
+
+</header>
+
+
+<div class="login-container">
+    <form action="#" onsubmit="return check();" class="login-form">
+      <h1>Login</h1>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email"><br>
+      <span id="err1"></span>
+
+      <label for="password">Password:</label>
+      <input type="password" id="pass" name="password"><br>
+      <span id="err2"></span>
+
+<input type="submit" value="Submit" id="submit">
+    </form>
+  </div>
+
+
+</body>
+<script>
+  function check()
+{
+
+var email=document.getElementById("email");
+var err1=document.getElementById("err1");
+
+
+var pass=document.getElementById("pass");
+var err2=document.getElementById("err2");
+
+if(email.value=="")
+{
+    err1.innerHTML="Email must be required";
+    err1.style.color="red";
+    email.style.border="2px solid red"
+
+   var_email=false;
+}
+else
+{
+    var pattern=/^[\w\.]+@([\w]+\.)+[\w]{2,4}$/;
+    var match=pattern.test(email.value);
+
+    if(match)
+    {
+        err1.innerHTML="";
+        email.style.border="";
+
+        var_email=true;
+    }
+    else
+    {
+        err1.innerHTML="Email is not matching";
+        err1.style.color="red";
+        email.style.border="2px solid red"
+
+        var_email=false;
+
+    }
+}
+
+
+if(pass.value=="")
+{
+    err2.innerHTML="password must be required";
+    err2.style.color="red";
+    pass.style.border="2px solid red"
+
+   var_pass=false;
+}
+else
+{
+    var pattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    var match=pattern.test(pass.value);
+
+    if(match)
+    {
+        err2.innerHTML="";
+        pass.style.border="";
+        var_pass=true;
+    }
+    else
+    {
+        err2.innerHTML="password can only 8 digit and it contain special symbol";
+        err2.style.color="red";
+        pass.style.border="2px solid red"
+
+        var_pass=false;
+
+    }
+}
+
+if(var_email==true&& var_pass==true)
+{
+   alert("data submitted");
+}
+if(var_email==true && var_pass==true)
+{
+    return true;
+}
+else
+{
+    return false;
+}
+
+
+
+}
+
+
+
+
+</script>
+</html>
